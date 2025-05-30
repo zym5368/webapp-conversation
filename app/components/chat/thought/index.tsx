@@ -46,16 +46,16 @@ const Thought: FC<IThoughtProps> = ({
     }
   })
 
-  return (
-    <div className='my-2 space-y-2'>
-      {toolThoughtList.map((item: ToolInfoInThought, index) => (
-        <Tool
-          key={index}
-          payload={item}
-          allToolIcons={allToolIcons}
-        />
-      ))}
-    </div>
-  )
+  // return (
+  //   <div className='my-2 space-y-2'>
+  //     {toolThoughtList.map((item: ToolInfoInThought, index) => (
+  //       <Tool
+  //         key={index}
+  //         payload={item}
+  //         allToolIcons={allToolIcons}
+  //       />
+  //     ))}
+  //   </div>
+  // )
 }
 export default React.memo(Thought)
