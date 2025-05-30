@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天组件嵌入示例</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .demo-buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 聊天组件嵌入示例</h1>
+            <p>这个页面展示了如何在你的网站中嵌入聊天组件</p>
+        </div>
+
+        <div class="section">
+            <h2>📋 方式一：使用JavaScript SDK（推荐）</h2>
+            <p>在你的网页中添加以下代码：</p>
+            <div class="code-block">
+                &lt;!-- 在 &lt;head&gt; 或 &lt;body&gt; 底部添加 --&gt;
+                &lt;script&gt;
+                // 配置聊天组件
+                window.chatWidgetConfig = {
+                baseUrl: 'https://your-domain.com', // 替换为你的域名
+                width: '400px',
+                height: '600px',
+                position: 'bottom-right', // bottom-right, bottom-left, center
+                showButton: true,
+                buttonText: '💬',
+                autoLoad: true
+                };
+                &lt;/script&gt;
+                &lt;script src="https://your-domain.com/embed-sdk.js"&gt;&lt;/script&gt;
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎮 在线演示</h2>
+            <div class="demo-buttons">
+                <button class="btn" onclick="initWidget()">加载聊天组件</button>
+                <button class="btn" onclick="toggleWidget()">切换显示/隐藏</button>
+                <button class="btn btn-danger" onclick="destroyWidget()">销毁组件</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🖼️ 方式二：直接使用iframe</h2>
+            <p>如果你更喜欢简单的iframe方式：</p>
+            <div class="code-block">
+                &lt;iframe
+                src="https://your-domain.com/embed"
+                width="400"
+                height="600"
+                frameborder="0"
+                style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"&gt;
+                &lt;/iframe&gt;
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ 配置选项</h2>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                <thead>
+                    <tr style="background: #f8f9fa;">
+                        <th style="border: 1px solid #dee2e6; padding: 12px; text-align: left;">选项</th>
+                        <th style="border: 1px solid #dee2e6; padding: 12px; text-align: left;">类型</th>
+                        <th style="border: 1px solid #dee2e6; padding: 12px; text-align: left;">默认值</th>
+                        <th style="border: 1px solid #dee2e6; padding: 12px; text-align: left;">说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">baseUrl</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">string</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">当前域名</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">你的聊天应用部署的域名</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">width</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">string</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">'400px'</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">聊天窗口宽度</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">height</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">string</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">'600px'</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">聊天窗口高度</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">position</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">string</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">'bottom-right'</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">位置：bottom-right, bottom-left, center</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">showButton</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">boolean</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">true</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">是否显示聊天按钮</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">buttonText</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">string</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">'💬'</td>
+                        <td style="border: 1px solid #dee2e6; padding: 8px;">聊天按钮文本/图标</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🚀 部署步骤</h2>
+            <ol>
+                <li><strong>构建和部署应用：</strong>
+                    <div class="code-block">
+                        npm run build
+                        npm start
+                        # 或使用 Docker
+                        docker build . -t chat-app
+                        docker run -p 3000:3000 chat-app
+                    </div>
+                </li>
+                <li><strong>配置环境变量：</strong> 确保 .env.local 文件包含正确的 Dify API 配置</li>
+                <li><strong>测试嵌入页面：</strong> 访问 https://your-domain.com/embed 确认页面正常工作</li>
+                <li><strong>在目标网站使用：</strong> 按照上述代码示例在你的网站中添加聊天组件</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let widgetInstance = null;
+
+        function initWidget() {
+            if (widgetInstance) {
+                widgetInstance.destroy();
+            }
+
+            widgetInstance = new ChatWidget({
+                baseUrl: window.location.origin,
+                width: '350px',
+                height: '500px',
+                position: 'bottom-right',
+                showButton: true,
+                buttonText: '🤖'
+            });
+        }
+
+        function toggleWidget() {
+            if (widgetInstance) {
+                widgetInstance.toggle();
+            } else {
+                alert('请先点击"加载聊天组件"按钮');
+            }
+        }
+
+        function destroyWidget() {
+            if (widgetInstance) {
+                widgetInstance.destroy();
+                widgetInstance = null;
+            }
+        }
+    </script>
+
+    <!-- 加载嵌入SDK -->
+    <script src="/embed-sdk.js"></script>
+</body>
+
+</html>
